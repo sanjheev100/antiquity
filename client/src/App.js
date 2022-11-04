@@ -6,6 +6,7 @@ function App() {
   const contactRef = useRef(null)
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   return (
     <div>
@@ -291,16 +292,16 @@ function App() {
             <div className='container'>
               <div className='row'>
                 <div
-                  class='card w-100'
+                  className='card w-100'
                   style={{ width: '18rem', background: '#21459C' }}
                 >
-                  <div class='card-body'>
-                    <h5 class='card-title text-white'>
+                  <div className='card-body'>
+                    <h5 className='card-title text-white'>
                       Talk to our cloud experts
                     </h5>
-                    <p class='card-text  text-white'>
-                      Learn how you can leverage Antiquity Cloud experts to
-                      build a foundation for success on the cloud
+                    <p className='card-text  text-white'>
+                      contactRef Learn how you can leverage Antiquity Cloud
+                      experts to build a foundation for success on the cloud
                     </p>
 
                     <div>
@@ -376,8 +377,7 @@ function App() {
               )}
               <div className='form-wrap'>
                 <ContactusForm
-                  success={success}
-                  error={error}
+                  setLoading={setLoading}
                   setSuccess={setSuccess}
                   setError={setError}
                 />

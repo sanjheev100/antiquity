@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 
-const ContactusForm = ({ success, setSuccess, error, setError }) => {
+const ContactusForm = ({ setSuccess, setError, setLoading }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -10,40 +10,51 @@ const ContactusForm = ({ success, setSuccess, error, setError }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     let payload = {
       name,
       email,
       phone,
       description,
     }
+    setLoading(true)
     axios
       .post(`${process.env.REACT_APP_BACKEND}/sendEmail`, payload)
       .then((res) => {
         setSuccess('Request Recevied Our Executive will contact you shortly')
         setEmail('')
         setDescription('')
+        setLoading(false)
         setName('')
         setPhone('')
         setTimeout(() => {
           setSuccess('')
         }, 6000)
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+          })
+        }, 3000)
       })
       .catch((error) => {
         console.log(error)
         setError('Something Happend Please Try again later')
+        setLoading(false)
         setTimeout(() => {
           setError('')
-        }, 6000)
+        }, 5000)
       })
   }
 
   return (
     <form>
-      <div class='form-group'>
+      <div className='form-group'>
         {/* <label for='exampleInputEmail1'>Email address</label> */}
         <input
           type='text'
-          class='form-control'
+          className='form-control'
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder='Enter Name'
@@ -51,11 +62,11 @@ const ContactusForm = ({ success, setSuccess, error, setError }) => {
           name='name'
         />
       </div>
-      <div class='form-group'>
+      <div className='form-group'>
         {/* <label for='exampleInputEmail1'>Email address</label> */}
         <input
           type='number'
-          class='form-control'
+          className='form-control'
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder='Enter Phone'
@@ -63,11 +74,11 @@ const ContactusForm = ({ success, setSuccess, error, setError }) => {
           name='phone'
         />
       </div>
-      <div class='form-group'>
+      <div className='form-group'>
         {/* <label for='exampleInputEmail1'>Email address</label> */}
         <input
           type='email'
-          class='form-control'
+          className='form-control'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder='Enter Email'
@@ -75,7 +86,7 @@ const ContactusForm = ({ success, setSuccess, error, setError }) => {
           name='email'
         />
       </div>
-      <div class='form-group'>
+      <div className='form-group'>
         {/* <label for='exampleInputEmail1'>Email address</label> */}
         <textarea
           onChange={(e) => setDescription(e.target.value)}
@@ -87,7 +98,7 @@ const ContactusForm = ({ success, setSuccess, error, setError }) => {
         />
       </div>
       <button
-        disabled={!name || !email || !phone || !description}
+        // disabled={!name || !email || !phone || !description || loading}
         className='btn btn-success'
         onClick={handleSubmit}
       >
