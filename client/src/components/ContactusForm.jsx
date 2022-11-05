@@ -98,7 +98,7 @@ const ContactusForm = ({ setSuccess, setError, setLoading }) => {
         />
       </div>
       <button
-        // disabled={!name || !email || !phone || !description || loading}
+        disabled={!name || !email || !phone || !description || loading}
         className='btn btn-success'
         onClick={handleSubmit}
       >
