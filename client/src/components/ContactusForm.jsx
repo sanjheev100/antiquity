@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 
-const ContactusForm = ({ setSuccess, setError, setLoading }) => {
+const ContactusForm = ({ setSuccess, setError, setLoading, loading }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')

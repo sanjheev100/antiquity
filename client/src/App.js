@@ -378,6 +378,7 @@ function App() {
               <div className='form-wrap'>
                 <ContactusForm
                   setLoading={setLoading}
+                  loading={loading}
                   setSuccess={setSuccess}
                   setError={setError}
                 />
