@@ -343,7 +343,21 @@ function App() {
                     <span className='c-icon'>
                       <i className='fa fa-envelope' aria-hidden='true'></i>
                     </span>
-                    <span className='c-info'>email@yourdomain.com</span>
+                    <span className='c-info'>
+                      contact@antiquitycloudbasedservice.com
+                    </span>
+                  </div>
+                </div>
+                <div className='address-block border-bottom'>
+                  <h3 className='add-title'>Address</h3>
+                  <div className='c-detail'></div>
+                  <div className='c-detail'>
+                    <span className='c-icon'>
+                      <i className='fa fa-map-marker' aria-hidden='true'></i>
+                    </span>
+                    <span className='c-info'>
+                      8,The Green Suite A,Dover 19901
+                    </span>
                   </div>
                 </div>
               </div>
